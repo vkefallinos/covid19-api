@@ -16,6 +16,9 @@ jobs:
         with:
           repository: CSSEGISandData/COVID-19
           path: data
+      - name: Hello world action step
+        uses: ./main/
+        id: hello
       - name: Checkout owid/covid-19-data
         uses: actions/checkout@v2
         with:
