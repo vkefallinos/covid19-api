@@ -1,7 +1,8 @@
 on:
   schedule:
     - cron: "15 0 * * *"
-
+  push:
+    branches: [ master ]
 jobs:
   extract_job:
     runs-on: ubuntu-latest
@@ -10,10 +11,15 @@ jobs:
         uses: actions/checkout@v2
         with:
           path: main
-      - name: Checkout data repo
+      - name: Checkout CSSEGISandData/COVID-19 
         uses: actions/checkout@v2
         with:
           repository: CSSEGISandData/COVID-19
+          path: data
+      - name: Checkout owid/covid-19-data
+        uses: actions/checkout@v2
+        with:
+          repository: owid/covid-19-data
           path: data
       - name: Hello world action step
         uses: ./main/
